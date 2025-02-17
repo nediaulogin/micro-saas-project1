@@ -4,6 +4,12 @@ import { PrismaAdapter } from "@auth/prisma-adapter"
 import { prisma } from "../databae"
  
 export const { handlers, signIn, signOut, auth } = NextAuth({
+  pages: {
+    signIn: "/auth",
+    signOut: "/auth",
+    error: "/auth",
+    verifyRequest: "/auth",
+    newUser: "/app",},
   adapter: PrismaAdapter(prisma),
   providers: [
     /*Nodemailer({
