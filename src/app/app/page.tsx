@@ -1,6 +1,14 @@
-import { auth } from "@/services/auth";
+import { DashboardPage, DashboardPageHeader, DashboardPageHeaderTitle, DashboardPageMain } from "@/components/dashboard/page";
+
 
 export default async function Page() {
-  const session = await auth()
-  return  <pre>{JSON.stringify(session?.user, null, 1)}</pre> ;
-}
+  return (
+    <DashboardPage>
+      <DashboardPageHeader>
+        <DashboardPageHeaderTitle>Tarefas</DashboardPageHeaderTitle>
+      </DashboardPageHeader>
+      <DashboardPageMain>
+        <p>Page </p>
+      </DashboardPageMain>
+    </DashboardPage>
+  )}
