@@ -4,9 +4,14 @@ import { HomeIcon, SettingsIcon } from "lucide-react";
 import { Sidebar, SidebarFooter, SidebarHeader, SidebarMain, SidebarNav, SidebarNavHeader, SidebarNavHeaderTitle, SidebarNavLink, SidebarNavMain } from "@/components/dashboard/sidebar";
 import { usePathname, } from "next/navigation";
 import { UserDropdown } from "./user-dropdown";
+import Logo from "@/components/logo";
+import { Session } from "next-auth";
 
+type MainSidebarProps = {
+    user: Session['user']
+}
 
-export function MainSidebar() {
+export function MainSidebar({user}: MainSidebarProps) {
   const pathname = usePathname();
 
   const isActive = (path: string) => {
@@ -15,8 +20,8 @@ export function MainSidebar() {
   return (
     <div className="grid grid-cols-[16rem_1fr] gap-4">
       <Sidebar>
-        <SidebarHeader>
-          <h1></h1>
+        <SidebarHeader className="border-b border-border">
+          <Logo />
         </SidebarHeader>
         <SidebarMain className="flex flex-col flex-grow">
           <SidebarNav>
@@ -45,7 +50,7 @@ export function MainSidebar() {
           </SidebarNav>
         </SidebarMain>
         <SidebarFooter>
-         <UserDropdown />
+         <UserDropdown user={user} />
         </SidebarFooter>
       </Sidebar>
 
