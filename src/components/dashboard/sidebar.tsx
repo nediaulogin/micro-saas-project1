@@ -18,7 +18,7 @@ export function Sidebar({ className, children }: SidebarProps) {
 
 export function SidebarHeader({ className, children }: SidebarProps) {
   return (
-    <header className={cn(['p-6 ', className])}>
+    <header className={cn(['p-3 px-6', className])}>
       {children}
     </header>
   );
