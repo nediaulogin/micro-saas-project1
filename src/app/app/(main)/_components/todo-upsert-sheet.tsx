@@ -44,17 +44,17 @@ export function TodoUpsertSheet({ children }: TodoUpsertSheetProps) {
 
           <form onSubmit={onSubmit} className="space-y-8">
             <SheetHeader>
-              <SheetTitle>Edit profile</SheetTitle>
+              <SheetTitle>Create todo</SheetTitle>
               <SheetDescription>
-                Make changes to your profile here. Click save when you&apos;re done.
+                Add or edit your todo item here.
               </SheetDescription>
             </SheetHeader>
             <FormField
               control={form.control}
-              name="username"
+              name="todo"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Username</FormLabel>
+                  <FormLabel>Title</FormLabel>
                   <FormControl>
                     <Input placeholder="shadcn" {...field} />
                   </FormControl>
@@ -67,10 +67,8 @@ export function TodoUpsertSheet({ children }: TodoUpsertSheetProps) {
             />
 
             <SheetFooter>
-              <SheetClose asChild>
-                <Button type="submit">Save changes</Button>
+              <Button type="submit">Save changes</Button>
 
-              </SheetClose>
             </SheetFooter>
           </form>
         </Form>
