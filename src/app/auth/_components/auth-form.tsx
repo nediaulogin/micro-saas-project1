@@ -14,7 +14,7 @@ export function AuthForm() {
     const handleSubmit = form.handleSubmit(async (data) => {
       try {
         
-        await signIn('email', { email: data.email, redirect: false })
+        await signIn('nodemailer', { email: data.email, redirect: false })
         toast({
             title: 'Email Sent',
             description: 'Check your email for the magic link',
@@ -34,10 +34,21 @@ export function AuthForm() {
             <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="space-y-2">
                     <Label htmlFor="email">Email</Label>
-                    <Input id="email" placeholder="example.com" required type="email" {...form.register('email')} />
+                    <Input 
+                        id="email" 
+                        placeholder="example.com" 
+                        required 
+                        type="email" 
+                        {...form.register('email')} 
+                    />
                 </div>
-                <Button type="submit" className="w-full">
-                    send magic link
+                <Button 
+                    type="submit" 
+                    className="w-full"
+                    disabled={form.formState.isSubmitting}
+                    >
+                    {form.formState.isSubmitting ? 'Sending...' : 'send magic link'}
+                    
                 </Button>
             </form>
         </div>
